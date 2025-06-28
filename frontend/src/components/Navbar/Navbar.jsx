@@ -59,7 +59,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end space-x-20">
           <ul className="menu menu-horizontal px-1 hidden lg:flex">{links}</ul>
-          <a className="btn  mr-4 md:mr-0 bg-black text-white hover:bg-gray-800 text-sm sm:text-base ml-2">
+          <a className="btn mr-4 md:mr-0 bg-black text-white transition-all duration-300 ease-in-out hover:bg-gray-800 hover:scale-105 hover:shadow-lg text-sm sm:text-base ml-2">
             Contact Me
           </a>
         </div>
