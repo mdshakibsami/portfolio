@@ -93,6 +93,7 @@ const Experience = () => {
                       "CSS3",
                       "TailwindCSS",
                       "Git",
+                      "Node"
                     ].map((tech) => (
                       <span
                         key={tech}
