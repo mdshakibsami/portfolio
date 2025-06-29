@@ -56,40 +56,7 @@ const Banner = () => {
 
   return (
     <div>
-      <style jsx>{`
-        @keyframes slideInRight {
-          0% {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-
-        .animate-slide-in-right {
-          animation: slideInRight 1s ease-in-out;
-        }
-
-        @keyframes blink {
-          0%,
-          50% {
-            opacity: 1;
-          }
-          51%,
-          100% {
-            opacity: 0;
-          }
-        }
-
-        .typing-cursor::after {
-          content: "|";
-          animation: blink 1s infinite;
-          margin-left: 2px;
-        }
-      `}</style>
-      <div className="hero bg-base-200 min-h-[600px]  py-10">
+      <div className="hero bg-base-200 min-h-[600px] py-10">
         <div className="hero-content flex-col lg:flex-row max-w-6xl mx-auto w-full justify-between items-center">
           {/* Profile Picture - Left Side */}
           <div className="flex-1 flex justify-center lg:justify-center">

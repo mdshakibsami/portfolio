@@ -1,16 +1,53 @@
 import React from "react";
 import profile from "../../assets/banner/profile.png";
+import resume from "../../assets/resume/ShakibResume.pdf";
 
 const About = () => {
+  const handleDownloadResume = () => {
+    const link = document.createElement("a");
+    link.href = resume;
+    link.download = "ShakibResume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Add custom CSS animation
+  React.useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes expandLine {
+        0% {
+          width: 0%;
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          width: 50%;
+          opacity: 1;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   return (
     <div className="bg-gray-50 py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-            About Me
-          </h2>
-          <div className="w-20 h-1 bg-black mx-auto"></div>
+          <div className="relative inline-block">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+              About Me
+            </h2>
+            {/* Animated half underline */}
+            <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-[expandLine_2s_ease-out_forwards] shadow-lg"></div>
+          </div>
         </div>
 
         {/* Main Content */}
@@ -149,7 +186,10 @@ const About = () => {
                 </span>
               </div>
 
-              <button className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+              <button
+                onClick={handleDownloadResume}
+                className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95"
+              >
                 <svg
                   className="w-5 h-5"
                   fill="currentColor"
