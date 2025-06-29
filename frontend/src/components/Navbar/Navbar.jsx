@@ -29,7 +29,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
+    <div className="sticky top-0 z-50">
       <div className="navbar bg-base-100 shadow-sm  sm:px-6 md:px-10">
         <div className="navbar-start">
           <div className="dropdown  dropdown-hover">
@@ -52,7 +52,7 @@ const Navbar = () => {
             )}
           </div>
           <img
-            className="hidden md:block w-12 h-12 md:w-14 md:h-14"
+            className="hidden md:block w-12 h-12 md:w-14 md:h-14 cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg rounded-full border-2 border-transparent hover:border-blue-500"
             src={logo}
             alt="Logo"
           />
