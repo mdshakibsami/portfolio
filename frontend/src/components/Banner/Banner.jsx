@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import profile from "../../assets/banner/profile.png";
 import resume from "../../assets/resume/ShakibResume.pdf";
 
-const designations = ["Frontend +", "Backend =", "Full Stack Web Developer"];
-
 const Banner = () => {
-  const [currentDesignation, setCurrentDesignation] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const fullText = "Full Stack Web Developer";
 
   const handleDownloadResume = () => {
     const link = document.createElement("a");
@@ -17,11 +16,43 @@ const Banner = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentDesignation((prev) => (prev + 1) % designations.length);
-    }, 2000); // Slower pace - 3.5 seconds
-    return () => clearInterval(interval);
-  }, []);
+    let index = 0;
+    let isDeleting = false;
+    let timeoutId;
+
+    const type = () => {
+      const current = fullText.substring(0, index);
+      setDisplayText(current);
+
+      if (!isDeleting && index === fullText.length) {
+        // Pause at end before deleting
+        timeoutId = setTimeout(() => {
+          isDeleting = true;
+          type();
+        }, 2000);
+        return;
+      }
+
+      if (isDeleting && index === 0) {
+        // Pause before restarting
+        isDeleting = false;
+        timeoutId = setTimeout(() => {
+          type();
+        }, 500);
+        return;
+      }
+
+      // Continue typing or deleting
+      index = isDeleting ? index - 1 : index + 1;
+      timeoutId = setTimeout(type, isDeleting ? 75 : 150);
+    };
+
+    type();
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [fullText]);
 
   return (
     <div>
@@ -39,6 +70,23 @@ const Banner = () => {
 
         .animate-slide-in-right {
           animation: slideInRight 1s ease-in-out;
+        }
+
+        @keyframes blink {
+          0%,
+          50% {
+            opacity: 1;
+          }
+          51%,
+          100% {
+            opacity: 0;
+          }
+        }
+
+        .typing-cursor::after {
+          content: "|";
+          animation: blink 1s infinite;
+          margin-left: 2px;
         }
       `}</style>
       <div className="hero bg-base-200 min-h-[600px]  py-10">
@@ -63,10 +111,10 @@ const Banner = () => {
               Md Shakib
             </h1>
 
-            {/* Animated Designation */}
+            {/* Animated Typing Designation */}
             <div className="h-12 mb-6 overflow-hidden">
-              <h2 className="text-2xl lg:text-3xl font-semibold text-black transition-all duration-1000 ease-in-out transform animate-slide-in-right">
-                {designations[currentDesignation]}
+              <h2 className="text-2xl lg:text-3xl font-semibold text-black typing-cursor">
+                {displayText}
               </h2>
             </div>
 
