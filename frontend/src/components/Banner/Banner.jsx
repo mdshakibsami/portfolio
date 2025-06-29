@@ -94,11 +94,11 @@ const Banner = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
-              <button className="btn bg-black text-white transition-all duration-300 ease-in-out hover:bg-gray-800 hover:scale-105 hover:shadow-lg">
+              <button className="btn hover:text-blue-500 bg-black text-white transition-all duration-300 ease-in-out hover:bg-gray-800 hover:scale-105 hover:shadow-lg">
                 View My Work
               </button>
               <button
-                className="btn btn-outline transition-all duration-300 ease-in-out hover:bg-black hover:text-white hover:scale-105 hover:shadow-lg"
+                className="btn hover:text-blue-500 btn-outline transition-all duration-300 ease-in-out hover:bg-black hover:scale-105 hover:shadow-lg"
                 onClick={handleDownloadResume}
               >
                 Download Resume

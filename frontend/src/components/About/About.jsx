@@ -12,30 +12,6 @@ const About = () => {
     document.body.removeChild(link);
   };
 
-  // Add custom CSS animation
-  React.useEffect(() => {
-    const style = document.createElement("style");
-    style.textContent = `
-      @keyframes expandLine {
-        0% {
-          width: 0%;
-          opacity: 0;
-        }
-        50% {
-          opacity: 1;
-        }
-        100% {
-          width: 50%;
-          opacity: 1;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
   return (
     <div className="bg-gray-50 py-16 px-6">
       <div className="max-w-7xl mx-auto">
@@ -46,7 +22,7 @@ const About = () => {
               About Me
             </h2>
             {/* Animated half underline */}
-            <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-[expandLine_2s_ease-out_forwards] shadow-lg"></div>
+            <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-lg animate-pulse w-1/2"></div>
           </div>
         </div>
 
@@ -188,7 +164,7 @@ const About = () => {
 
               <button
                 onClick={handleDownloadResume}
-                className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95"
+                className="w-full bg-black hover:text-blue-500 text-white py-3 rounded-lg font-medium hover:bg-gray-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 active:scale-95"
               >
                 <svg
                   className="w-5 h-5"
