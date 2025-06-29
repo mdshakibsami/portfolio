@@ -1,28 +1,90 @@
-import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
+import Swal from "sweetalert2";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const form = useRef();
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+
+    // Show loading alert
+    Swal.fire({
+      title: "Sending Message...",
+      html: "Please wait while we send your message.",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      background: "#ffffff",
+      color: "#1f2937",
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
+    emailjs
+      .sendForm("service_rk1hqvb", "template_9xev946", form.current, {
+        publicKey: "lq_K3jYiK6AqmBY-Y",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          // Success alert with custom styling
+          Swal.fire({
+            title: "Message Sent Successfully!",
+            html: "Thank you for reaching out. I'll get back to you as soon as possible.",
+            icon: "success",
+            background: "#ffffff",
+            color: "#1f2937",
+            confirmButtonColor: "#000000",
+            confirmButtonText: "Great!",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+            customClass: {
+              popup: "rounded-2xl shadow-2xl border border-gray-100",
+              title: "text-2xl font-bold text-gray-900",
+              htmlContainer: "text-gray-600",
+              confirmButton:
+                "bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg",
+            },
+          });
+          // Reset form
+          form.current.reset();
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          // Error alert with custom styling
+          Swal.fire({
+            title: "Oops! Something went wrong",
+            html: "Failed to send your message. Please try again or contact me directly via email.",
+            icon: "error",
+            background: "#ffffff",
+            color: "#1f2937",
+            confirmButtonColor: "#000000",
+            confirmButtonText: "Try Again",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+            customClass: {
+              popup: "rounded-2xl shadow-2xl border border-gray-100",
+              title: "text-2xl font-bold text-gray-900",
+              htmlContainer: "text-gray-600",
+              confirmButton:
+                "bg-black hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg",
+            },
+          });
+        }
+      );
   };
 
   return (
-    <div className="bg-gray-50 py-20 px-6">
+    <div id="contact" className="bg-gray-50 py-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -127,7 +189,7 @@ const Contact = () => {
                   </svg>
                 </a>
                 <a
-                   href="https://www.linkedin.com/in/mdshakibsami/"
+                  href="https://www.linkedin.com/in/mdshakibsami/"
                   target="_blank"
                   className="w-12 h-12 bg-gray-200 hover:bg-black rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-105 group"
                 >
@@ -158,7 +220,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-white rounded-2xl p-8 shadow-xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={sendEmail} ref={form} className="space-y-6">
               {/* Name and Email Row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -172,8 +234,6 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     placeholder="John Doe"
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                     required
@@ -190,8 +250,6 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     placeholder="john@example.com"
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                     required
@@ -211,8 +269,6 @@ const Contact = () => {
                   type="text"
                   id="subject"
                   name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
                   placeholder="How can I help you?"
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                   required
@@ -230,8 +286,6 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   placeholder="Your message here..."
                   rows="5"
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300 resize-none"

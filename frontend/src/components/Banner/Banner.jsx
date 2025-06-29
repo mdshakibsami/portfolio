@@ -6,6 +6,16 @@ const Banner = () => {
   const [displayText, setDisplayText] = useState("");
   const fullText = "Full Stack Web Developer";
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   const handleDownloadResume = () => {
     const link = document.createElement("a");
     link.href = resume;
@@ -55,7 +65,7 @@ const Banner = () => {
   }, [fullText]);
 
   return (
-    <div>
+    <div id="home">
       <div className="hero bg-base-200 min-h-[600px] py-10">
         <div className="hero-content flex-col lg:flex-row max-w-6xl mx-auto w-full justify-between items-center">
           {/* Profile Picture - Left Side */}
@@ -94,7 +104,10 @@ const Banner = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
-              <button className="btn hover:text-blue-500 bg-black text-white transition-all duration-300 ease-in-out hover:bg-gray-800 hover:scale-105 hover:shadow-lg">
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="btn hover:text-blue-500 bg-black text-white transition-all duration-300 ease-in-out hover:bg-gray-800 hover:scale-105 hover:shadow-lg"
+              >
                 View My Work
               </button>
               <button

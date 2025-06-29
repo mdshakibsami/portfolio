@@ -2,7 +2,7 @@ import experiencePic from "../../assets/experience/experience.png";
 
 const Experience = () => {
   return (
-    <div className="bg-white py-20 px-6">
+    <div id="experience" className="bg-white py-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -20,7 +20,7 @@ const Experience = () => {
 
         {/* Experience Card */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 group">
+          <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 group overflow-hidden">
             <div className="flex flex-col lg:flex-row items-stretch gap-8 h-full">
               {/* Company Logo Section */}
               <div className="lg:w-1/3 flex-shrink-0 flex flex-col justify-center">
@@ -93,7 +93,7 @@ const Experience = () => {
                       "CSS3",
                       "TailwindCSS",
                       "Git",
-                      "Node"
+                      "Node",
                     ].map((tech) => (
                       <span
                         key={tech}

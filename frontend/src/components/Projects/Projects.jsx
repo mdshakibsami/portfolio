@@ -56,7 +56,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="bg-white py-20 px-6">
+    <div id="projects" className="bg-white py-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
