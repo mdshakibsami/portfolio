@@ -1,9 +1,17 @@
 import experiencePic from "../../assets/experience/experience.png";
+import { motion } from "framer-motion";
 
 const Experience = () => {
   return (
-    <div id="experience" className="bg-white py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+    <motion.div
+      id="experience"
+      className="bg-white py-20 sm:px-6 "
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <div className="sm:max-w-11/12 sm:mx-auto mx-0">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="relative inline-block">
@@ -19,7 +27,7 @@ const Experience = () => {
         </div>
 
         {/* Experience Card */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-10/12 mx-auto">
           <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-gray-200 group overflow-hidden">
             <div className="flex flex-col lg:flex-row items-stretch gap-8 h-full">
               {/* Company Logo Section */}
@@ -89,11 +97,12 @@ const Experience = () => {
                     {[
                       "React",
                       "JavaScript",
-                      "HTML5",
                       "CSS3",
                       "TailwindCSS",
                       "Git",
                       "Node",
+                      "Express",
+                      "React-Native",
                     ].map((tech) => (
                       <span
                         key={tech}
@@ -131,7 +140,7 @@ const Experience = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

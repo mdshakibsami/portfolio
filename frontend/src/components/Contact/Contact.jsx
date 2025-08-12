@@ -1,6 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const form = useRef();
@@ -84,8 +85,15 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" className="bg-gray-50 py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+    <motion.div
+      id="contact"
+      className="bg-gray-50 py-20 px-6"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+    >
+      <div className="max-w-6xl sm:mx-auto mx-0">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="relative inline-block">
@@ -103,8 +111,14 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
+          <motion.div
+            className="space-y-8 items-center   lg:items-start lg:text-left flex flex-col"
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Contact Information
               </h3>
@@ -216,10 +230,16 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-xl">
+          <motion.div
+            className="bg-white rounded-2xl p-8 shadow-xl transition-all duration-500 border border-gray-100 hover:border-blue-400 hover:shadow-2xl hover:scale-[1.03]"
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <form onSubmit={sendEmail} ref={form} className="space-y-6">
               {/* Name and Email Row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -234,7 +254,7 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Md Shakib"
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                     required
                   />
@@ -250,7 +270,7 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="john@example.com"
+                    placeholder="shakib@example.com"
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                     required
                   />
@@ -308,10 +328,10 @@ const Contact = () => {
                 Send Message
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

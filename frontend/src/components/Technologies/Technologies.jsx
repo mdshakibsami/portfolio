@@ -129,7 +129,7 @@ const Technologies = () => {
 
   return (
     <div id="skills" className="bg-white py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-11/12 mx-auto">
         {/* Header */}
         <div className="text-center mb-20">
           <div className="relative inline-block">

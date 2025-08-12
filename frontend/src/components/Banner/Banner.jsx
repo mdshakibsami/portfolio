@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import profile from "../../assets/banner/profile.png";
 import resume from "../../assets/resume/ShakibResume.pdf";
 
@@ -65,8 +66,30 @@ const Banner = () => {
   }, [fullText]);
 
   return (
-    <div id="home">
-      <div className="hero bg-base-200 min-h-[600px] py-10">
+    <div id="home" className="relative overflow-hidden">
+      {/* Stylish background shapes */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-br from-blue-500/40 via-purple-400/30 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-tr from-purple-500/30 via-blue-400/20 to-transparent rounded-full blur-2xl animate-blob" />
+        <svg
+          className="absolute bottom-0 left-0 w-full h-40 opacity-30"
+          viewBox="0 0 1440 320"
+        >
+          <path
+            fill="#6366f1"
+            fillOpacity="0.3"
+            d="M0,224L48,197.3C96,171,192,117,288,117.3C384,117,480,171,576,197.3C672,224,768,224,864,197.3C960,171,1056,117,1152,128C1248,139,1344,213,1392,250.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ amount: 0.3 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="hero min-h-[600px] py-10 bg-transparent"
+      >
         <div className="hero-content flex-col lg:flex-row max-w-6xl mx-auto w-full justify-between items-center">
           {/* Profile Picture - Left Side */}
           <div className="flex-1 flex justify-center lg:justify-center">
@@ -201,7 +224,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

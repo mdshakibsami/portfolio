@@ -1,6 +1,7 @@
 import React from "react";
 import profile from "../../assets/banner/profile.png";
 import resume from "../../assets/resume/ShakibResume.pdf";
+import { motion } from "framer-motion";
 
 const About = () => {
   const handleDownloadResume = () => {
@@ -13,8 +14,15 @@ const About = () => {
   };
 
   return (
-    <div className="bg-gray-50 py-16 px-6" id="about">
-      <div className="max-w-7xl mx-auto">
+    <motion.div
+      className="relative py-16 px-6 overflow-hidden"
+      id="about"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <div className="max-w-11/12 mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="relative inline-block">
@@ -51,7 +59,18 @@ const About = () => {
             {/* Cards Row */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Education Card */}
-              <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
+              <motion.div
+                className="relative bg-white/90 backdrop-blur-md border border-blue-400/20 rounded-xl p-4 shadow-md transition-all duration-300 cursor-pointer group min-h-[150px] flex flex-col justify-between hover:scale-105 hover:shadow-2xl hover:border-blue-500/60 hover:bg-gradient-to-br hover:from-blue-100/80 hover:to-purple-100/80 hover:ring-2 hover:ring-blue-400/20"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                whileHover={{
+                  scale: 1.08,
+                  boxShadow: "0 8px 32px 0 rgba(99,102,241,0.15)",
+                  borderColor: "#3b82f6",
+                }}
+              >
                 <div className="flex items-center mb-4">
                   <svg
                     className="w-6 h-6 text-black mr-3"
@@ -73,9 +92,20 @@ const About = () => {
                   </p>
                   <p className="text-sm text-gray-500 mb-2">2022 - Present</p>
                 </div>
-              </div>
+              </motion.div>
               {/* Ambassador Card */}
-              <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
+              <motion.div
+                className="relative bg-white/90 backdrop-blur-md border border-purple-400/20 rounded-xl p-4 shadow-md transition-all duration-300 cursor-pointer group min-h-[150px] flex flex-col justify-between hover:scale-105 hover:shadow-2xl hover:border-purple-500/60 hover:bg-gradient-to-br hover:from-purple-100/80 hover:to-blue-100/80 hover:ring-2 hover:ring-purple-400/20"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                whileHover={{
+                  scale: 1.08,
+                  boxShadow: "0 8px 32px 0 rgba(139,92,246,0.15)",
+                  borderColor: "#a78bfa",
+                }}
+              >
                 <div className="flex items-center mb-4">
                   <svg
                     className="w-6 h-6 text-black mr-3"
@@ -97,10 +127,21 @@ const About = () => {
                   </p>
                   <p className="text-sm mt-2 text-gray-500 mb-2">2024 - 2025</p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Executive Member Card */}
-              <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
+              <motion.div
+                className="relative bg-white/90 backdrop-blur-md border border-purple-400/20 rounded-xl p-4 shadow-md transition-all duration-300 cursor-pointer group min-h-[150px] flex flex-col justify-between hover:scale-105 hover:shadow-2xl hover:border-purple-500/60 hover:bg-gradient-to-br hover:from-blue-100/80 hover:to-purple-100/80 hover:ring-2 hover:ring-purple-400/20"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                whileHover={{
+                  scale: 1.08,
+                  boxShadow: "0 8px 32px 0 rgba(139,92,246,0.15)",
+                  borderColor: "#a78bfa",
+                }}
+              >
                 <div className="flex items-center mb-4">
                   <svg
                     className="w-6 h-6 text-black mr-3"
@@ -124,13 +165,24 @@ const About = () => {
                     2025 - Present
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Profile Section */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl p-8 shadow-lg text-center sticky top-8">
+            <motion.div
+              className="relative bg-white/90 backdrop-blur-md border-2 border-blue-400/30 rounded-2xl p-8 shadow-2xl text-center sticky top-8 transition-all duration-300 group hover:border-blue-500/70 hover:shadow-blue-200/40 hover:scale-105"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 8px 32px 0 rgba(59,130,246,0.15)",
+                borderColor: "#3b82f6",
+              }}
+            >
               <div className="relative mb-6">
                 <img
                   src={profile}
@@ -175,11 +227,11 @@ const About = () => {
                 </svg>
                 Download Resume
               </button>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
