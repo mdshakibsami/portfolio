@@ -1,16 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { motion } from "framer-motion";
-import civic1 from "../../assets/civic/1000.png";
-import civic2 from "../../assets/civic/1002.png";
-import civic3 from "../../assets/civic/1003.png";
 
-import roommate1 from "../../assets/roommate/2000.png";
-import roommate2 from "../../assets/roommate/2001.png";
-import roommate3 from "../../assets/roommate/2002.png";
+import threadHome from "../../assets/ThreadUp/ThreadUp_Home.png";
+import threadProfile from "../../assets/ThreadUp/ThreadUp_Home.png";
+import threadPost from "../../assets/ThreadUp/ThreadUp_Posts.png";
+import threadAdmin from "../../assets/ThreadUp/ThreadUp_Admin.png";
 
-import bill1 from "../../assets/bill/3000.png";
-import bill2 from "../../assets/bill/3001.png";
-import bill3 from "../../assets/bill/3002.png";
+
+
+import civicHome from "../../assets/civic/Civic_home.png";
+import civicFeatures from "../../assets/civic/civic_features.png";
+import civicEvents from "../../assets/civic/civic_events.png";
+
+  import roommateHome from "../../assets/roommate/RF_Home.png";
+  import roommateListing from "../../assets/roommate/RF_Listing.png";
+  import roommateMyListing from "../../assets/roommate/RF_MyListing.png";
+  import roommateDashboard from "../../assets/roommate/RF_Dashboard.png";
+
+
 
 const Projects = () => {
   // State for image sliders - separate state for each project
@@ -18,10 +26,17 @@ const Projects = () => {
   const [currentImageIndex2, setCurrentImageIndex2] = useState(0);
   const [currentImageIndex3, setCurrentImageIndex3] = useState(0);
 
+  const navigate = useNavigate();
+
   // Project images
-  const projectImages = [civic1, civic2, civic3];
-  const projectImages2 = [roommate1, roommate2, roommate3];
-  const projectImages3 = [bill1, bill2, bill3];
+  const projectImages = [civicHome, civicFeatures, civicEvents];
+  const projectImages3 = [threadHome, threadProfile, threadPost, threadAdmin];
+  const projectImages2 = [
+    roommateHome,
+    roommateMyListing,
+    roommateListing,
+    roommateDashboard,
+  ];
 
   // Navigation functions for first project
   const nextImage = () => {
@@ -153,17 +168,21 @@ const Projects = () => {
                 <div className="space-y-6">
                   {/* Project Title */}
                   <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">
-                    Bill Manager
+                    ThreadUp
                   </h3>
                   {/* Project Description */}
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    A comprehensive bill management system that helps users
-                    track, organize, and manage their financial obligations with
-                    automated reminders and insightful analytics.
+                  <p className="text-gray-600 text-lg text-justify leading-relaxed">
+                    ThreadUp is a full-stack forum-style web application where
+                    users can share posts, interact with other members through
+                    comments, upvotes/downvotes, and follow discussions based on
+                    tags. It includes authentication, a membership system with
+                    role-based permissions, real-time announcements, and
+                    separate dashboards for users and admins.
                   </p>
                   {/* Action Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
+                      onClick={() => navigate("/project/1")}
                       className="flex-1 bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                       type="button"
                     >
@@ -207,15 +226,19 @@ const Projects = () => {
                   </h3>
 
                   {/* Project Description */}
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    A comprehensive civic engagement platform that demonstrates
-                    modern development practices and user-centered design
-                    principles with beautiful UI and seamless user experience.
+                  <p className="text-gray-600  text-justify text-lg leading-relaxed">
+                    CivicPulse is a community-focused event management platform
+                    designed to help people create, discover, and participate in
+                    social impact activities like cleanups, plantations,
+                    donations, and food drives. It offers secure user
+                    authentication, event creation and management tools, and
+                    advanced search & filtering for easy event discovery.
                   </p>
 
                   {/* Action Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
+                      onClick={() => navigate("/project/2")}
                       className="flex-1 bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                       type="button"
                     >
@@ -395,15 +418,18 @@ const Projects = () => {
                   </h3>
 
                   {/* Project Description */}
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    A comprehensive roommate matching platform that helps users
-                    find compatible living partners with advanced filtering and
-                    matching algorithms for the perfect living experience.
+                  <p className="text-gray-600 text-justify text-lg leading-relaxed">
+                    Roommate Finder is a web application that helps users
+                    browse, find, and connect with potential roommates. Users
+                    can create, edit, and manage their own roommate listings
+                    from a dedicated dashboard while also exploring and
+                    filtering listings from others.
                   </p>
 
                   {/* Action Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
+                      onClick={() => navigate("/project/3")}
                       className="flex-1 bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                       type="button"
                     >

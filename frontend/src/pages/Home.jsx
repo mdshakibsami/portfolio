@@ -4,10 +4,12 @@ import Technologies from "../components/Technologies/Technologies";
 import Contact from "../components/Contact/Contact";
 import Projects from "../components/Projects/Projects";
 import Experience from "../components/Experience/Experience";
+import Navbar from "../components/Navbar/Navbar";
 
 const Home = () => {
   return (
     <div>
+      <Navbar></Navbar>
       <Banner></Banner>
       <About></About>
       <Technologies></Technologies>

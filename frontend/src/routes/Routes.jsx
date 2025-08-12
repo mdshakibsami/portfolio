@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router";
 import Home from "../pages/Home";
-import ProjectDetails from "../pages/ProjectDetailsOne";
 import RootLayout from "../layouts/RootLayout";
+import ProjectDetailsOne from "../pages/ProjectDetailsOne";
+import ProjectDetailsTwo from "../pages/ProjectDetailsTwo";
+import ProjectDetailsThree from "../pages/ProjectDetailsThree";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -14,16 +17,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "project/1",
-        Component: ProjectDetails,
+        Component: ProjectDetailsOne,
       },
       {
         path: "project/2",
-        Component: ProjectDetails,
+        Component: ProjectDetailsTwo,
       },
       {
         path: "project/3",
-        Component: ProjectDetails,
+        Component: ProjectDetailsThree,
       },
     ],
+  },
+  {
+    path: "*",
+    Component: NotFound,
   },
 ]);

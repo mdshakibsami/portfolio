@@ -59,21 +59,12 @@ const Navbar = () => {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="sticky top-0 z-50"
     >
-      <div className="navbar bg-base-100/90 backdrop-blur-md border-b border-blue-500/30 shadow-lg sm:px-6 md:px-10 relative overflow-hidden ">
+  <div className="navbar bg-base-100/90 backdrop-blur-md border-b border-blue-500/30 shadow-lg sm:px-6 md:px-10 relative overflow-hidden ">
         {/* Stylish background shapes for navbar only */}
         <div className="absolute inset-0 -z-10 pointer-events-none">
           <div className="absolute -top-20 -left-32 w-[300px] h-[300px] bg-gradient-to-br from-blue-500/40 via-purple-400/30 to-transparent rounded-full blur-2xl animate-pulse" />
           <div className="absolute top-1/2 right-0 w-[180px] h-[180px] bg-gradient-to-tr from-purple-500/30 via-blue-400/20 to-transparent rounded-full blur-xl animate-blob" />
-          <svg
-            className="absolute bottom-0 left-0 w-full h-10 opacity-30"
-            viewBox="0 0 1440 320"
-          >
-            <path
-              fill="#6366f1"
-              fillOpacity="0.3"
-              d="M0,224L48,197.3C96,171,192,117,288,117.3C384,117,480,171,576,197.3C672,224,768,224,864,197.3C960,171,1056,117,1152,128C1248,139,1344,213,1392,250.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
+          <svg className="absolute bottom-0 left-0 w-full h-10 opacity-30" viewBox="0 0 1440 320"><path fill="#6366f1" fillOpacity="0.3" d="M0,224L48,197.3C96,171,192,117,288,117.3C384,117,480,171,576,197.3C672,224,768,224,864,197.3C960,171,1056,117,1152,128C1248,139,1344,213,1392,250.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
         </div>
         <div className="navbar-start">
           <div className="dropdown  dropdown-hover">
